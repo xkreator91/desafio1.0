@@ -6,7 +6,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
 
+
         while (!exit) {
+
+            System.out.println("opciones:");
+            System.out.println("----------------------------");
+
             System.out.println("0 - Menu");
             System.out.println("1 - Genera un archivo");
             System.out.println("2 - Lee archivo generado");
@@ -35,6 +40,7 @@ public class Main {
                     break;
                 case 6:
                     System.out.println("Saliendo del programa.");
+                    eliminarArchivosGenerados ();
                     exit = true;
                     break;
                 default:
@@ -139,6 +145,27 @@ public class Main {
             System.out.printf("El número %d fue encontrado en el archivo.%n", numeroBuscar);
         } else {
             System.out.printf("El número %d no fue encontrado en el archivo.%n", numeroBuscar);
+        }
+    }
+    public static void eliminarArchivosGenerados() {
+        // Implementación para eliminar archivos generados
+        File archivoNumeros = new File("numeros.txt");
+        File archivoNumerosOrdenados = new File("numeros_ordenados.txt");
+
+        if (archivoNumeros.exists()) {
+            if (archivoNumeros.delete()) {
+                System.out.println("Archivo numeros.txt eliminado correctamente.");
+            } else {
+                System.out.println("No se pudo eliminar el archivo numeros.txt.");
+            }
+        }
+
+        if (archivoNumerosOrdenados.exists()) {
+            if (archivoNumerosOrdenados.delete()) {
+                System.out.println("Archivo numeros_ordenados.txt eliminado correctamente.");
+            } else {
+                System.out.println("No se pudo eliminar el archivo numeros_ordenados.txt.");
+            }
         }
     }
 }
